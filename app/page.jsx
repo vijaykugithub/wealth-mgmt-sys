@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-// import {
-//   featuresData,
-//   howItWorksData,
-//   statsData,
-//   testimonialsData,
-// } from "@/data/landing";
+import {
+  featuresData,
+  howItWorksData,
+  statsData,
+  testimonialsData,
+} from "@/data/landing";
 import HeroSection from "@/components/hero";
 import Link from "next/link";
 
@@ -20,7 +20,7 @@ const LandingPage = () => {
       {/* Stats Section */}
       <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {statsData.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl font-bold text-blue-600 mb-2">
@@ -29,7 +29,7 @@ const LandingPage = () => {
                 <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
 
@@ -39,7 +39,7 @@ const LandingPage = () => {
           <h2 className="text-3xl font-bold text-center mb-12">
             Everything you need to manage your finances
           </h2>
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuresData.map((feature, index) => (
               <Card className="p-6" key={index}>
                 <CardContent className="space-y-4 pt-4">
@@ -49,7 +49,7 @@ const LandingPage = () => {
                 </CardContent>
               </Card>
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
 
@@ -57,7 +57,7 @@ const LandingPage = () => {
       <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-16">How It Works</h2>
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {howItWorksData.map((step, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -67,7 +67,7 @@ const LandingPage = () => {
                 <p className="text-gray-600">{step.description}</p>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
 
@@ -77,7 +77,7 @@ const LandingPage = () => {
           <h2 className="text-3xl font-bold text-center mb-16">
             What Our Users Say
           </h2>
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonialsData.map((testimonial, index) => (
               <Card key={index} className="p-6">
                 <CardContent className="pt-4">
@@ -100,7 +100,7 @@ const LandingPage = () => {
                 </CardContent>
               </Card>
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
 

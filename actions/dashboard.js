@@ -52,34 +52,38 @@ export async function getUserAccounts() {
 
 export async function createAccount(data) {
   try {
+    console.log("Starting createAccount function");
     const { userId } = await auth();
+    console.log("Authenticated userId:", userId);
     if (!userId) throw new Error("Unauthorized");
 
     // Get request data for ArcJet
-    const req = await request();
+    // const req = await request();
+    // console.log("Request data:", req);
 
-    // Check rate limit
-    const decision = await aj.protect(req, {
-      userId,
-      requested: 1, // Specify how many tokens to consume
-    });
+    // // Check rate limit
+    // const decision = await aj.protect(req, {
+    //   userId,
+    //   requested: 1, // Specify how many tokens to consume
+    // });
+    // console.log("Rate limit decision:", decision);
 
-    if (decision.isDenied()) {
-      if (decision.reason.isRateLimit()) {
-        const { remaining, reset } = decision.reason;
-        console.error({
-          code: "RATE_LIMIT_EXCEEDED",
-          details: {
-            remaining,
-            resetInSeconds: reset,
-          },
-        });
+    // if (decision.isDenied()) {
+    //   if (decision.reason.isRateLimit()) {
+    //     const { remaining, reset } = decision.reason;
+    //     console.error({
+    //       code: "RATE_LIMIT_EXCEEDED",
+    //       details: {
+    //         remaining,
+    //         resetInSeconds: reset,
+    //       },
+    //     });
 
-        throw new Error("Too many requests. Please try again later.");
-      }
+    //     throw new Error("Too many requests. Please try again later.");
+    //   }
 
-      throw new Error("Request blocked");
-    }
+    //   throw new Error("Request blocked");
+    // }
 
     const user = await db.user.findUnique({
       where: { clerkUserId: userId },
@@ -99,11 +103,13 @@ export async function createAccount(data) {
     const existingAccounts = await db.account.findMany({
       where: { userId: user.id },
     });
+    console.log("Existing accounts:", existingAccounts);
 
     // If it's the first account, make it default regardless of user input
     // If not, use the user's preference
     const shouldBeDefault =
       existingAccounts.length === 0 ? true : data.isDefault;
+    console.log("Should be default:", shouldBeDefault);
 
     // If this account should be default, unset other default accounts
     if (shouldBeDefault) {
@@ -111,6 +117,7 @@ export async function createAccount(data) {
         where: { userId: user.id, isDefault: true },
         data: { isDefault: false },
       });
+      console.log("Unset other default accounts");
     }
 
     // Create new account

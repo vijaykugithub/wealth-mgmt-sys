@@ -1,0 +1,27 @@
+{
+  "name": "@wealth-mgmt-sys/report-an-issue",
+  "version": "0.1.0",
+  "type": "module",
+  "description": " A react components for displaying report an ussue nodel",
+  "scripts": {
+    "build": "tsc --declaration --emitDeclarationOnly false --outDir dist",
+    "clean" : "rm -rf dist",
+    "postbuild":"cp package.jsin ../../../dist/packages/ui/report-an-issue/"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "html-react-parser": "5.2.10",
+    "html-to-image": "1.11.13"
+  },
+  "devDependencies": {
+    "@types/react":"19.2.7",
+    "@types/react-dom":"19.2.3"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
